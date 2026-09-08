@@ -25,7 +25,7 @@ jobs:
       - run: uv run ruff format --check .
       - run: uv run mypy src
       - run: uv run pytest --cov=rubin_subshifts --cov-branch --cov-report=term-missing --cov-report=xml --cov-report=html --cov-fail-under=90
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always() && matrix.python-version == '3.12'
         with:
           name: coverage
@@ -48,7 +48,7 @@ jobs:
       - run: uv build
       - run: unzip -l dist/*.whl && tar -tzf dist/*.tar.gz
       - run: uv run --isolated --with dist/*.whl python -c "import rubin_subshifts; print(rubin_subshifts.__version__)"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: distributions-and-site
           path: |
