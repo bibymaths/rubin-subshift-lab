@@ -40,9 +40,9 @@ class TransitionEvidence:
 
 
 def infer_transition_evidence(
-        trajectories: tuple[tuple[str, ...], ...],
-        labels: tuple[str, ...],
-        minimum_replicate_support: int,
+    trajectories: tuple[tuple[str, ...], ...],
+    labels: tuple[str, ...],
+    minimum_replicate_support: int,
 ) -> TransitionEvidence:
     """Infer allowed transitions supported by enough distinct replicates."""
     if not labels or len(set(labels)) != len(labels):

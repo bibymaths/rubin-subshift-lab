@@ -1,8 +1,8 @@
 # Rubin Subshift Laboratory
 
 [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB.svg)](https://www.python.org/)
-[![CI](https://github.com/bibymaths/rubin-subshift-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/rubin-subshift-lab/actions/workflows/ci.yml)
-[![Docs](https://github.com/bibymaths/rubin-subshift-lab/actions/workflows/docs.yml/badge.svg)](https://OWNER.github.io/rubin-subshift-lab/)
+[![CI](https://github.com/bibymaths/rubin-subshift-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/bibymaths/rubin-subshift-lab/actions/workflows/ci.yml)
+[![Docs](https://github.com/bibymaths/rubin-subshift-lab/actions/workflows/docs.yml/badge.svg)](https://bibymaths.github.io/rubin-subshift-lab/)
 [![Coverage](https://img.shields.io/badge/coverage-90%25%2B-brightgreen.svg)](#quality)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -30,7 +30,7 @@ The figure is generated deterministically by `scripts/export_example_figures.py`
 ## Quick start
 
 ```bash
-git clone https://github.com/<OWNER>/rubin-subshift-lab.git
+git clone https://github.com/bibymaths/rubin-subshift-lab.git
 cd rubin-subshift-lab
 uv sync --all-groups
 uv run streamlit run src/rubin_subshifts/app/streamlit_app.py
