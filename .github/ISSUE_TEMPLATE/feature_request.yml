@@ -1,0 +1,26 @@
+name: Feature request
+description: Propose a focused capability or algorithm.
+body:
+  - type: textarea
+    attributes:
+      label: Research need
+      description: What finite or infinite mathematical question does this support?
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Intended guarantee
+      options:
+        - Exact finite
+        - Exhaustive within bound
+        - Heuristic
+        - Experimental
+        - Proof-grade with source
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed interface and limits
+    validations:
+      required: true
+

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use Rubin Subshift Laboratory, cite this software."
+title: "Rubin Subshift Laboratory"
+type: software
+authors:
+  - family-names: Mishra
+    given-names: Abhinav
+version: 0.1.0
+date-released: 2026-07-22
+license: MIT
+repository-code: "https://github.com/bibymaths/rubin-subshift-lab"
+

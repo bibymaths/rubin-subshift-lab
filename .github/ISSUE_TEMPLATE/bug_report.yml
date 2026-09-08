@@ -1,0 +1,22 @@
+name: Bug report
+description: Report incorrect behaviour or a mathematical inconsistency.
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Reproduction
+      description: Include the smallest configuration and exact command.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Environment
+      description: Python, package version, operating system, and optional tools.
+    validations:
+      required: true
+

@@ -1,0 +1,115 @@
+[project]
+site_name = "Rubin Subshift Laboratory"
+site_description = "Finite computational experiments for symbolic dynamics, cellular automata, automorphism actions, and Rubin-inspired reconstruction."
+site_author = "Abhinav Mishra"
+site_url = "https://bibymaths.github.io/rubin-subshift-lab/"
+repo_url = "https://github.com/bibymaths/rubin-subshift-lab"
+repo_name = "bibymaths/rubin-subshift-lab"
+docs_dir = "docs"
+site_dir = "site"
+copyright = "Copyright © 2026 Abhinav Mishra · MIT License"
+nav = [
+  { "Home" = "index.md" },
+  { "Getting started" = "getting-started.md" },
+  { "Tutorials" = [
+    { "Basics" = "tutorials/basics.md" },
+    { "Example: Response model" = "tutorials/response_model.md" },
+    { "Biological applications" = "tutorials/biological_application.md" },
+  ] },
+  { "Mathematical background" = [
+    { "Symbolic dynamics" = "mathematical-background/symbolic-dynamics.md" },
+    { "Subshifts" = "mathematical-background/subshifts.md" },
+    { "Cellular automata" = "mathematical-background/cellular-automata.md" },
+    { "Automorphism groups" = "mathematical-background/automorphism-groups.md" },
+    { "Rubin-inspired reconstruction" = "mathematical-background/rubin-reconstruction.md" },
+  ] },
+  { "User guide" = [
+    { "Streamlit app" = "user-guide/streamlit-app.md" },
+    { "Subshift Designer" = "user-guide/subshift-designer.md" },
+    { "Cellular Automata Explorer" = "user-guide/cellular-automata-explorer.md" },
+    { "Group Explorer" = "user-guide/group-explorer.md" },
+    { "Reconstruction Laboratory" = "user-guide/reconstruction-lab.md" },
+    { "Command line" = "user-guide/command-line-interface.md" },
+    { "Figure export" = "user-guide/figure-export.md" },
+  ] },
+  { "Development" = [
+    { "Architecture" = "development/architecture.md" },
+    { "Testing" = "development/testing.md" },
+    { "Documentation" = "development/documentation.md" },
+    { "Contributing" = "development/contributing.md" },
+    { "Release process" = "development/release-process.md" },
+  ] },
+  { "API" = [
+    { "Overview" = "api/index.md" },
+    { "Symbolic" = "api/symbolic.md" },
+    { "Cellular automata" = "api/cellular-automata.md" },
+    { "Groups" = "api/groups.md" },
+    { "Reconstruction" = "api/reconstruction.md" },
+    { "Visualization" = "api/visualization.md" },
+  ] },
+  { "Reference" = [
+    { "Terminology" = "reference/terminology.md" },
+    { "Algorithmic guarantees" = "reference/algorithmic-guarantees.md" },
+    { "Configuration" = "reference/configuration.md" },
+    { "References" = "reference/references.md" },
+  ] },
+]
+extra_javascript = [
+  "javascripts/mathjax.js",
+  "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js",
+]
+
+[project.theme]
+language = "en"
+features = [
+  "navigation.instant",
+  "navigation.instant.progress",
+  "navigation.path",
+#  "navigation.sections",
+  "navigation.top",
+  "search.highlight",
+  "content.code.copy",
+]
+
+[[project.theme.palette]]
+scheme = "default"
+primary = "teal"
+accent = "deep purple"
+toggle.icon = "material/brightness-7"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+primary = "teal"
+accent = "deep purple"
+toggle.icon = "material/brightness-4"
+toggle.name = "Switch to light mode"
+
+[project.markdown_extensions.pymdownx.arithmatex]
+generic = true
+
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+md_in_html = {}
+tables = {}
+toc = { permalink = true }
+
+[project.plugins.mkdocstrings.handlers.python]
+paths = ["src"]
+
+[project.plugins.mkdocstrings.handlers.python.options]
+docstring_style = "google"
+inherited_members = true
+show_source = true
+show_root_heading = true
+members_order = "source"
+

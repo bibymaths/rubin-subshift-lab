@@ -1,0 +1,112 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rubin-subshift-lab"
+version = "0.1.0"
+description = "Finite computational experiments for symbolic dynamics, cellular automata, and Rubin-inspired reconstruction."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Abhinav Mishra" }]
+keywords = ["symbolic-dynamics", "cellular-automata", "automorphism-groups", "rubin-theorem"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = [
+  "kaleido>=1.0",
+  "networkx>=3.3",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "plotly>=6.0",
+  "pydantic>=2.9",
+  "rich>=13.9",
+  "streamlit>=1.45",
+  "typer>=0.15",
+]
+
+[project.urls]
+Documentation = "https://github.com/bibymaths/rubin-subshift-lab"
+Repository = "https://github.com/bibymaths/rubin-subshift-lab"
+Issues = "https://github.com/bibymaths/rubin-subshift-lab/issues"
+
+[project.scripts]
+rubin-subshift = "rubin_subshifts.cli:app"
+
+[dependency-groups]
+dev = [
+  { include-group = "test" },
+  { include-group = "docs" },
+  "mypy>=1.15",
+  "pre-commit>=4.2",
+  "ruff>=0.11",
+  "types-networkx>=3.3",
+]
+test = [
+  "hypothesis>=6.130",
+  "pytest>=8.3",
+  "pytest-cov>=6.1",
+]
+docs = [
+  "mkdocstrings[python]>=0.29",
+  "zensical>=0.0.15",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rubin_subshifts"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+markers = [
+  "optional: tests requiring an optional external executable",
+  "slow: bounded tests that are intentionally slower",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["rubin_subshifts"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+skip_covered = true
+exclude_also = [
+  "if TYPE_CHECKING:",
+  "if __name__ == .__main__.:",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "D"]
+ignore = ["D105", "D107", "D203", "D213"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["D", "S101"]
+"src/rubin_subshifts/app/pages/*.py" = ["D"]
+"scripts/export_example_figures.py" = ["E501"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["rubin_subshifts"]
+plugins = ["pydantic.mypy"]
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = ["plotly.*", "streamlit.*", "pandas.*", "kaleido.*"]
+ignore_missing_imports = true

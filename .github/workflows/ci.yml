@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.29"
+          enable-cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: uv sync --all-groups --frozen
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy src
+      - run: uv run pytest --cov=rubin_subshifts --cov-branch --cov-report=term-missing --cov-report=xml --cov-report=html --cov-fail-under=90
+      - uses: actions/upload-artifact@v4
+        if: always() && matrix.python-version == '3.12'
+        with:
+          name: coverage
+          path: |
+            coverage.xml
+            htmlcov/
+
+  package-and-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.29"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: uv sync --all-groups --frozen
+      - run: uv run zensical build --clean --strict
+      - run: uv build
+      - run: unzip -l dist/*.whl && tar -tzf dist/*.tar.gz
+      - run: uv run --isolated --with dist/*.whl python -c "import rubin_subshifts; print(rubin_subshifts.__version__)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: distributions-and-site
+          path: |
+            dist/
+            site/
+
