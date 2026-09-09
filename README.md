@@ -8,6 +8,8 @@
 
 **Rubin Subshift Laboratory: Computational Reconstruction of Symbolic Dynamical Systems from Automorphism Groups** is a finite computational laboratory for symbolic dynamics, one-dimensional cellular automata, finite permutation images, and Rubin-inspired reconstruction experiments.
 
+I highly recommend reading [this](https://en.wikipedia.org/wiki/Reversible_cellular_automaton) Wikipedia article, along with the linked and related topics, to build a solid understanding of reversible cellular automata and the surrounding concepts.
+
 > [!IMPORTANT]
 > The software produces exact statements about declared finite domains and bounded evidence about larger systems. It does not claim that finite experiments prove Rubin's theorem for infinite subshifts.
 
